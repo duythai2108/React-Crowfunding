@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import classNames from "utils/classNames";
 
 const Button = ({
   type = "button",
@@ -15,9 +16,11 @@ const Button = ({
   );
   return (
     <button
-      className={`py-4 text-base font-semibold rounded-xl flex justify-center items-center text-white p-4 min-h-[56px] ${
-        !!isLoading ? "opacity-50 pointer-events-none" : ""
-      } ${className}`}
+      className={classNames(
+        "py-4 text-base font-semibold rounded-xl flex justify-center items-center text-white p-4 min-h-[56px]",
+        !!isLoading ? "opacity-50 pointer-events-none" : "",
+        className
+      )}
       type={type}
       {...rest}
     >
