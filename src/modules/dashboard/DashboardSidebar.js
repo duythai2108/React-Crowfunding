@@ -9,6 +9,7 @@ import {
 } from "components/icons";
 import React from "react";
 import { NavLink } from "react-router-dom";
+import classNames from "utils/classNames";
 
 const DashboardSidebar = () => {
   const sidebarLinks = [
@@ -40,12 +41,14 @@ const DashboardSidebar = () => {
     {
       icon: <IconLogout></IconLogout>,
       title: "Logout",
-      url: "/logout",
+      url: "#",
+      onclick: () => {},
     },
     {
       icon: <IconDarkmode></IconDarkmode>,
-      title: "Darkmode",
-      url: "/darkmode",
+      title: "Light/Dark",
+      url: "#",
+      onclick: () => {},
     },
   ];
   return (
@@ -54,7 +57,11 @@ const DashboardSidebar = () => {
         <NavLink
           to={link.url}
           key={link.title}
-          className="flex items-center gap-x-5 md:w-12 md:h-12 md:justify-center md:rounded-3xl md:mb-8 text-icon-color"
+          className={classNames(
+            "flex items-center gap-x-5 md:w-12 md:h-12 md:justify-center md:rounded-lg md:mb-8 text-icon-color last:mt-auto last:bg-white last:shadow-sdprimary",
+            ({ isActive }) =>
+              isActive ? "bg-primary text-primary bg-opacity-20" : "inactive"
+          )}
         >
           <span>{link.icon}</span>
           <span className="md:hidden">{link.title}</span>
