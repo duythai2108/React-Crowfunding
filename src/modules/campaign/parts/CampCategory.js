@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import classNames from "utils/classNames";
 
-const CampCategory = ({ text = "education", className = " text-sm" }) => {
+const CampCategory = ({ text = "Education", className = " text-sm" }) => {
   return (
     <Link to="/" className="flex items-baseline gap-x-3">
       <IconFolder></IconFolder>
