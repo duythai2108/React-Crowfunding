@@ -5,7 +5,7 @@ import classNames from "utils/classNames";
 const Button = ({
   type = "button",
   children,
-  className = "",
+  className = "text-white",
   isLoading = false,
   ...rest
 }) => {
@@ -17,7 +17,7 @@ const Button = ({
   return (
     <button
       className={classNames(
-        "py-4 text-base font-semibold rounded-xl flex justify-center items-center text-white p-4 min-h-[56px]",
+        "py-4 text-base font-semibold rounded-xl flex justify-center items-center  p-4 min-h-[56px]",
         !!isLoading ? "opacity-50 pointer-events-none" : "",
         className
       )}
