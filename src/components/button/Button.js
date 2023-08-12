@@ -1,11 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "utils/classNames";
+import { Link } from "react-router-dom";
 
 const Button = ({
   type = "button",
   children,
-  className = "text-white",
+  className = "",
   isLoading = false,
   ...rest
 }) => {
@@ -14,10 +15,33 @@ const Button = ({
   ) : (
     children
   );
+  let defaultClassName =
+    "py-4 text-base font-semibold rounded-xl flex justify-center items-center p-4 min-h-[56px]";
+  switch (rest.kind) {
+    case "primary":
+      defaultClassName = defaultClassName + " bg-primary text-white";
+      break;
+    case "secondary":
+      defaultClassName = defaultClassName + " bg-secondary text-white";
+      break;
+    case "ghost":
+      defaultClassName =
+        defaultClassName + " bg-secondary text-secondary  bg-opacity-10";
+      break;
+
+    default:
+      break;
+  }
+  if (rest.href)
+    return (
+      <Link className={classNames(defaultClassName, className)} to={rest.href}>
+        {child}
+      </Link>
+    );
   return (
     <button
       className={classNames(
-        "py-4 text-base font-semibold rounded-xl flex justify-center items-center  p-4 min-h-[56px]",
+        defaultClassName,
         !!isLoading ? "opacity-50 pointer-events-none" : "",
         className
       )}
@@ -29,9 +53,11 @@ const Button = ({
   );
 };
 Button.propTypes = {
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   children: PropTypes.node,
   className: PropTypes.string,
   isLoading: PropTypes.bool,
+  href: PropTypes.string,
+  kind: PropTypes.oneOf(["primary", "secondary", "ghost"]),
 };
 export default Button;

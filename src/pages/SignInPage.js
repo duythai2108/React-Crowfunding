@@ -70,7 +70,7 @@ const SignInPage = () => {
             Forgot password
           </span>
         </div>
-        <Button type="submit" className="bg-primary w-full">
+        <Button type="submit" className=" w-full" kind="primary">
           Sign in
         </Button>
       </form>

@@ -37,8 +37,10 @@ const CampaignPage = () => {
           </div>
         </div>
         <Button
-          className="bg-secondary text-secondary bg-opacity-20"
+          href="/start-campaign"
+          kind="ghost"
           type="button"
+          className="px-8"
         >
           Create campaign
         </Button>
@@ -50,6 +52,24 @@ const CampaignPage = () => {
         <CampaignFeature></CampaignFeature>
         <CampaignFeature></CampaignFeature>
       </CampaignGrid>
+      <div className="mt-10 text-center"></div>
+      <Button kind="ghost" className="mx-auto px-8">
+        <span>See more</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth="1.5"
+          stroke="currentColor"
+          className="w-6 h-6"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M12 4.5v15m7.5-7.5h-15"
+          />
+        </svg>
+      </Button>
     </LayoutDashboard>
   );
 };
