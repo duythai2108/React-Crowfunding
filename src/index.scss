@@ -16,3 +16,32 @@
 input:focus + .error-input {
   display: none;
 }
+.quill {
+  @apply border border-strock rounded-xl;
+  border-radius: 10px;
+  border: 1px solid var(--whitsh-strock-color, #f1f1f3);
+  padding: 15px 25px;
+  .ql-toolbar.ql-snow {
+    border: none;
+    background: none;
+    @apply bg-text4 bg-opacity-10 inline-block rounded-xl py-3 px-5;
+  }
+  .ql-container.ql-snow,
+  .ql-editor {
+    @apply border-none font-primary text-sm;
+  }
+  .ql-editor {
+    @apply pt-10;
+  }
+  .ql-editor.ql-blank::before {
+    font-style: normal;
+    @apply text-sm not-italic text-text4;
+  }
+}
+.shadow-1 {
+  box-shadow: 4px 4px 8px 0px rgba(226, 226, 226, 0.2),
+    -4px 4px 8px 0px rgba(226, 226, 226, 0.2);
+}
+.ReactModal__Body--open {
+  overflow: hidden;
+}
