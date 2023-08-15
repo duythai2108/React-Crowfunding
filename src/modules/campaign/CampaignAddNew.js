@@ -12,6 +12,9 @@ import axios from "axios";
 import { Button } from "components/button";
 import useOnChange from "hooks/useOnChange";
 import { toast } from "react-toastify";
+import DatePicker from "react-date-picker";
+import "react-date-picker/dist/DatePicker.css";
+import "react-calendar/dist/Calendar.css";
 Quill.register("modules/imageUploader", ImageUploader);
 
 const CampaignAddNew = () => {
@@ -67,6 +70,8 @@ const CampaignAddNew = () => {
     }
     fetchCountry();
   }, [filterCountry]);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
   return (
     <div className=" bg-white rounded-xl py-10 px-[66px]">
       <div className="text-center">
@@ -198,19 +203,32 @@ const CampaignAddNew = () => {
           <FormRow>
             <FormGroup>
               <Label>Start Date</Label>
-              <Input
+              <div>
+                <DatePicker
+                  onChange={setStartDate}
+                  value={startDate}
+                  format="dd-MM-yyyy"
+                />
+              </div>
+              {/* <Input
                 control={control}
                 name="start_date"
                 placeholder="Start Date"
-              ></Input>
+              ></Input> */}
             </FormGroup>
             <FormGroup>
               <Label>End Date</Label>
-              <Input
+              <DatePicker
+                onChange={setEndDate}
+                value={endDate}
+                format="dd-MM-yyyy"
+              />
+              {/* <Input
+                type="date"
                 control={control}
                 name="end_date"
                 placeholder="End Date"
-              ></Input>
+              ></Input> */}
             </FormGroup>
           </FormRow>
           <div className="text-center mt-10">
