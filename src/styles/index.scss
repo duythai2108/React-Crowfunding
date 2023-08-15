@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "content";
 @layer base {
   body {
     @apply font-primary text-base font-normal mx-auto;
@@ -16,15 +17,13 @@
 input:focus + .error-input {
   display: none;
 }
+
 .quill {
   @apply border border-strock rounded-xl;
-  border-radius: 10px;
-  border: 1px solid var(--whitsh-strock-color, #f1f1f3);
   padding: 15px 25px;
   .ql-toolbar.ql-snow {
     border: none;
-    background: none;
-    @apply bg-text4 bg-opacity-10 inline-block rounded-xl py-3 px-5;
+    @apply bg-text4 bg-opacity-10 rounded-xl py-3 px-5 inline-block;
   }
   .ql-container.ql-snow,
   .ql-editor {
@@ -34,7 +33,6 @@ input:focus + .error-input {
     @apply pt-10;
   }
   .ql-editor.ql-blank::before {
-    font-style: normal;
     @apply text-sm not-italic text-text4;
   }
 }
