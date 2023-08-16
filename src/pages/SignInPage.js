@@ -10,6 +10,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import useToggleValue from "hooks/useToggleValue";
 import { IconEyeToggle } from "components/icons";
+import { useDispatch } from "react-redux";
+import { authLogin } from "store/auth/auth-slice";
 const schema = yup.object({
   email: yup.string().email("").required("This field is required"),
   password: yup
@@ -26,16 +28,17 @@ const SignInPage = () => {
     resolver: yupResolver(schema),
     mode: "onSubmit",
   });
-  const handleSignIn = (values) => {
-    console.log("🚀 ~ SignInPage ~ values:", values);
-  };
   const { value: showpassword, handleToggleValue: handleTogglePassword } =
     useToggleValue();
+  const dispatch = useDispatch();
+  const handleSignIn = (values) => {
+    dispatch(authLogin(values));
+  };
   return (
     <LayoutAuthentication heading="Welcome Back!">
       <p className="text-text3 text-xs lg:text-sm  text-center font-normal lg:mb-8 mb-6">
         Dont have an account?{" "}
-        <Link to="/sign-up" className="text-primary underline font-medium">
+        <Link to="/register" className="text-primary underline font-medium">
           Sign up
         </Link>
       </p>

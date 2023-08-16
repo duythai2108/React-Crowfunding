@@ -52,7 +52,7 @@ const SignUpPage = () => {
     <LayoutAuthentication heading="SignUp">
       <p className="text-text3 text-xs lg:text-sm  text-center font-normal lg:mb-8 mb-6">
         Already have an account?{" "}
-        <Link to="/sign-in" className="text-primary underline font-medium">
+        <Link to="/login" className="text-primary underline font-medium">
           Sign in
         </Link>
       </p>
