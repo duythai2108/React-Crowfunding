@@ -31,9 +31,7 @@ const SignUpPage = () => {
     resolver: yupResolver(schema),
     mode: "onSubmit",
   });
-  const handleSignUp = (values) => {
-    console.log("🚀 ~ SignUpPage ~ values:", values);
-  };
+  const handleSignUp = (values) => {};
   const { value: acceptTerm, handleToggleValue: handleToggleTerm } =
     useToggleValue();
   const { value: showpassword, handleToggleValue: handleTogglePassword } =
