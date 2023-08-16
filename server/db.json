@@ -1,5 +1,20 @@
 {
-  "users": [],
+  "users": [
+    {
+      "id": 1,
+      "name": "Nguyễn Duy Thái",
+      "password": "$2b$10$xVxXoeP/QVkTTyXLHuwGnOWCp8xqqUomEIPUiiEungzvGo8fpb1oa",
+      "email": "thaiduy21082000@gmail.com",
+      "refreshToken": null
+    },
+    {
+      "id": 2,
+      "name": "perry",
+      "password": "$2b$10$kFj7o4pLZ4YHxWgNObrEuOPI0TBjF/i5Fm8IGdsioEW4ItmdvrNTy",
+      "email": "thaiNDSE140250@fpt.edu.vn",
+      "refreshToken": null
+    }
+  ],
   "categories": [],
   "campaigns": [
     {
