@@ -9,20 +9,17 @@ import ReactModal from "react-modal";
 import { Outlet } from "react-router-dom";
 
 const LayoutDashboard = ({ children }) => {
-  
   return (
-    <RequireAuthPage>
-      <div className="p-10 bg-lite min-h-screen">
-        <Overlay></Overlay>
-        <DashboardTopbar></DashboardTopbar>
-        <div className="flex gap-x-10 items-start">
-          <DashboardSidebar></DashboardSidebar>
-          <div className="flex-1">
-            <Outlet></Outlet>
-          </div>
+    <div className="p-10 bg-lite min-h-screen">
+      <Overlay></Overlay>
+      <DashboardTopbar></DashboardTopbar>
+      <div className="flex gap-x-10 items-start">
+        <DashboardSidebar></DashboardSidebar>
+        <div className="flex-1">
+          <Outlet></Outlet>
         </div>
       </div>
-    </RequireAuthPage>
+    </div>
   );
 };
 

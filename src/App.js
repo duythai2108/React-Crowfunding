@@ -8,6 +8,9 @@ import LayoutPayment from "layout/LayoutPayment";
 import { useDispatch, useSelector } from "react-redux";
 import { authRefreshToken, authUpdateUser } from "store/auth/auth-slice";
 import { getToken, logOut } from "utils/auth";
+import RequireAuthPage from "pages/RequireAuthPage";
+import UnAuthorizePage from "pages/UnauthorizePage";
+import { permissions } from "constants/permissions";
 
 const SignUpPage = lazy(() => import("pages/SignUpPage"));
 const SignInPage = lazy(() => import("pages/SignInPage"));
@@ -21,7 +24,6 @@ Modal.setAppElement("#root");
 Modal.defaultStyles = {};
 function App() {
   const { user } = useSelector((state) => state.auth);
-  console.log("🚀 ~ App ~ user:", user);
   const dispatch = useDispatch();
   useEffect(() => {
     if (user && user.id) {
@@ -49,13 +51,25 @@ function App() {
         <Route element={<LayoutDashboard></LayoutDashboard>}>
           <Route path="/" element={<DashboardPage></DashboardPage>}></Route>
           <Route
+            path="/unauthorize"
+            element={<UnAuthorizePage></UnAuthorizePage>}
+          ></Route>
+          <Route
             path="/campaign"
             element={<CampaignPage></CampaignPage>}
           ></Route>
           <Route
-            path="/start-campaign"
-            element={<StartCampaignPage></StartCampaignPage>}
-          ></Route>
+            element={
+              <RequireAuthPage
+                allowPermissions={[permissions.campaign.CREATE_CAMPAIGN]}
+              ></RequireAuthPage>
+            }
+          >
+            <Route
+              path="/start-campaign"
+              element={<StartCampaignPage></StartCampaignPage>}
+            ></Route>
+          </Route>
           <Route
             path="/campaign/:slug"
             element={<CampaignView></CampaignView>}
