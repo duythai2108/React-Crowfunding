@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import LayoutAuthentication from "../layout/LayoutAuthentication";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, ButtonGoogle } from "components/button";
 import FormGroup from "components/common/FormGroup";
 import { Label } from "components/label";
@@ -10,7 +10,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import useToggleValue from "hooks/useToggleValue";
 import { IconEyeToggle } from "components/icons";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authLogin } from "store/auth/auth-slice";
 const schema = yup.object({
   email: yup.string().email("").required("This field is required"),
@@ -34,6 +34,14 @@ const SignInPage = () => {
   const handleSignIn = (values) => {
     dispatch(authLogin(values));
   };
+  const { user } = useSelector((state) => state.auth);
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (user && user.id) {
+      navigate("/");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [user]);
   return (
     <LayoutAuthentication heading="Welcome Back!">
       <p className="text-text3 text-xs lg:text-sm  text-center font-normal lg:mb-8 mb-6">
