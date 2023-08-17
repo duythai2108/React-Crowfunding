@@ -60,6 +60,7 @@ const DashboardSidebar = () => {
         if (link.url === "/logout") {
           return (
             <button
+              key={link.title}
               onClick={() => dispatch(authLogOut())}
               className={navlinkClass}
             >

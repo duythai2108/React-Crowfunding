@@ -34,14 +34,7 @@ const SignInPage = () => {
   const handleSignIn = (values) => {
     dispatch(authLogin(values));
   };
-  const { user } = useSelector((state) => state.auth);
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (user && user.id) {
-      navigate("/");
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [user]);
+
   return (
     <LayoutAuthentication heading="Welcome Back!">
       <p className="text-text3 text-xs lg:text-sm  text-center font-normal lg:mb-8 mb-6">
